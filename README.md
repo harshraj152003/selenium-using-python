@@ -47,6 +47,8 @@ Selenium operates using a 4-tier client-server architectural model:
 | (Python/Selenium SDK) | <================  | (e.g.chromedriver)| <================  | (Chrome/Firefox) |
 +-----------------------+     JSON / HTTP    +------------------+      Commands       +------------------+
 
+```
+
 ---
 
 ## 📁 Repository Structure
