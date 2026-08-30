@@ -1,7 +1,2 @@
-.venv
-# Virtual environment
 venv/
-.venv/
-
-# VS Code directory
 .vscode/
