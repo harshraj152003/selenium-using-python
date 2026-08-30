@@ -46,8 +46,7 @@ Selenium operates using a 4-tier client-server architectural model:
 |  Client Code          |  ================> |  Browser Driver  |  ================>  |  Target Browser  |
 | (Python/Selenium SDK) | <================  | (e.g.chromedriver)| <================  | (Chrome/Firefox) |
 +-----------------------+     JSON / HTTP    +------------------+      Commands       +------------------+
-
-```
+````
 
 ---
 
@@ -62,6 +61,7 @@ selenium-using-python/
 │   ├── locating_multiple.py    # Fetching collections of elements and extracting text
 │   └── project.py              # Multi-page paginated scraping and writing HTML files to disk
 └── .gitignore
+```
 
 ## 📋 Prerequisites & Requirements
 
@@ -79,8 +79,8 @@ Before running the scripts in this repository, ensure your environment meets the
 
 Follow these steps to set up the project locally:
 
-### 1. Clone the Repository
+### Clone the Repository
 ```bash
 git clone [https://github.com/harshraj152003/selenium-using-python.git](https://github.com/harshraj152003/selenium-using-python.git)
 cd selenium-using-python
-````
+```
