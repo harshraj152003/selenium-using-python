@@ -19,46 +19,66 @@ def task1_open_playground(driver):
     driver.get("file:///Users/admin/selenium-practice/playGround/html/index.html")
 
 
-def task2_redirect_to_target(driver):
-    """Click on the redirect link to navigate to the target hover page."""
+def task2_hover_workflow(driver):
+    """Navigate to target-page.html, hover over menu, click Data 1, and handle alert."""
     target_link = driver.find_element(By.ID, "target-link")
     target_link.click()
 
-
-def task3_hover_and_click_data(driver):
-    """Automate the Hover Div in the new page, click Data 1 once revealed, and accept the alert."""
-    # Locate hover container
     hover_container = WebDriverWait(driver, 5).until(
         EC.presence_of_element_located((By.ID, "mouse-hover-container"))
     )
 
-    # Perform mouse hover action
     actions = ActionChains(driver)
     actions.move_to_element(hover_container).perform()
 
-    # Click 'Data 1' option inside the hover menu
     data_1_btn = driver.find_element(By.ID, "data-1-btn")
     data_1_btn.click()
 
-    # Handle and accept the resulting alert
     alert = WebDriverWait(driver, 5).until(EC.alert_is_present())
-    print(f"Alert Text Captured: {alert.text}")
+    print(f"[Hover Task] Alert Text Captured: {alert.text}")
     alert.accept()
 
 
+def task3_navigate_back_to_main(driver):
+    """Navigate back to the index.html page."""
+    script_dir = Path(__file__).parent
+    index_path = (script_dir.parent / "html" / "index.html").resolve()
+    driver.get(index_path.as_uri())
+
+
+def task4_drag_and_drop(driver):
+    """Navigate to drag-drop.html and drag the small div into the big target div."""
+    drag_link = driver.find_element(By.ID, "drag-drop-link")
+    drag_link.click()
+
+    # Locate source (small div) and target (big div)
+    source_element = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located((By.ID, "draggable-source"))
+    )
+    target_element = driver.find_element(By.ID, "droppable-target")
+
+    # Perform Drag and Drop using ActionChains
+    actions = ActionChains(driver)
+    actions.drag_and_drop(source_element, target_element).perform()
+    print("[Drag & Drop Task] Element successfully dragged and dropped!")
+
+
 def main():
-    """Main function to execute all selenium tasks sequentially."""
+    """Main function to execute all task functions sequentially."""
     driver = setup_driver()
 
     try:
-        print("Executing Task 1: Opening Playground...")
+        print("Executing Task 1: Opening Main Playground...")
         task1_open_playground(driver)
 
-        print("Executing Task 2: Redirecting to target page...")
-        task2_redirect_to_target(driver)
+        print("Executing Task 2: Hover and Alert Workflow...")
+        task2_hover_workflow(driver)
 
-        print("Executing Task 3: Hovering and clicking Data 1...")
-        task3_hover_and_click_data(driver)
+        print("Executing Task 3: Returning to Main Page...")
+        task3_navigate_back_to_main(driver)
+
+        print("Executing Task 4: Drag and Drop Action...")
+        task4_drag_and_drop(driver)
 
         print("All tasks completed successfully!")
 

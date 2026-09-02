@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag and Drop Practice</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        background-color: #f4f6f9;
+      }
+      .container {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+      }
+      #draggable-source {
+        width: 100px;
+        height: 100px;
+        background-color: #007bff;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: grab;
+      }
+      #droppable-target {
+        width: 250px;
+        height: 250px;
+        background-color: #e9ecef;
+        border: 3px dashed #6c757d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #495057;
+        border-radius: 12px;
+        transition: background-color 0.3s;
+      }
+      #droppable-target.dropped {
+        background-color: #28a745;
+        color: white;
+        border-color: #1e7e34;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Drag & Drop ActionChains Practice</h1>
+    <p>Drag the small blue box into the big dashed area.</p>
+
+    <div class="container">
+      <!-- Source Small Div -->
+      <div id="draggable-source" draggable="true" ondragstart="drag(event)">
+        Drag Me
+      </div>
+
+      <!-- Target Big Div -->
+      <div
+        id="droppable-target"
+        ondragover="allowDrop(event)"
+        ondrop="drop(event)"
+      >
+        Drop Here
+      </div>
+    </div>
+
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var draggedElement = document.getElementById(data);
+        var targetElement = ev.currentTarget;
+
+        targetElement.appendChild(draggedElement);
+        targetElement.classList.add("dropped");
+        targetElement.innerHTML = "";
+        targetElement.appendChild(draggedElement);
+        document.getElementById("draggable-source").innerText = "Dropped!";
+      }
+    </script>
+  </body>
+</html>
