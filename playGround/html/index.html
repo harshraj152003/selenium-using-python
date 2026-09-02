@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selenium Practice Playground</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <h1 id="main-heading">Selenium Practice Playground</h1>
+      <p class="subtitle">
+        A complete single-page application designed for learning element
+        locators, waits, and interactions.
+      </p>
+    </header>
+
+    <div class="container">
+      <section class="card" id="headings-section">
+        <h2>Headings Demo</h2>
+        <h1>Heading Level 1 (h1)</h1>
+        <h2>Heading Level 2 (h2)</h2>
+        <h3>Heading Level 3 (h3)</h3>
+        <h4>Heading Level 4 (h4)</h4>
+        <h5>Heading Level 5 (h5)</h5>
+        <h6>Heading Level 6 (h6)</h6>
+        <p id="sample-paragraph">
+          This is a paragraph containing <strong>bold text</strong>,
+          <em>italicized text</em>, and a
+          <a href="https://www.google.com" id="google-link" target="_blank"
+            >Google Link</a
+          >
+          for testing link texts.
+        </p>
+        <p>
+          <a href="target-page.html" id="target-link" class="nav-link"
+            >Go to Hover Practice Page</a
+          >
+        </p>
+        <p>
+          <a
+            href="target-page.html"
+            id="target-link-blank"
+            target="_blank"
+            class="nav-link"
+            >Open Hover Practice in New Tab</a
+          >
+        </p>
+      </section>
+
+      <section class="card" id="forms-section">
+        <h2>Form Controls & Inputs</h2>
+        <form id="practice-form" onsubmit="event.preventDefault()">
+          <div class="form-group">
+            <label for="username">Username (by ID):</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password (by Name):</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="country">Country (Dropdown):</label>
+            <select id="country" name="country">
+              <option value="">-- Select Country --</option>
+              <option value="us">United States</option>
+              <option value="in">India</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Gender (Radio Buttons):</label>
+            <label
+              ><input type="radio" name="gender" value="male" /> Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="female" /> Female</label
+            >
+          </div>
+
+          <div class="form-group">
+            <label>Skills (Checkboxes):</label>
+            <label
+              ><input
+                type="checkbox"
+                name="skill"
+                value="python"
+                id="chk-python"
+              />
+              Python</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="skill"
+                value="selenium"
+                id="chk-selenium"
+              />
+              Selenium</label
+            >
+            <label
+              ><input type="checkbox" name="skill" value="cpp" id="chk-cpp" />
+              C++</label
+            >
+            <label
+              ><input type="checkbox" name="skill" value="java" id="chk-java" />
+              Java</label
+            >
+          </div>
+
+          <div class="button-group">
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              Submit Form
+            </button>
+            <button
+              type="button"
+              id="alert-btn"
+              class="btn btn-warning"
+              onclick="alert('Selenium Alert Triggered!')"
+            >
+              Trigger Alert
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="dynamic-section">
+        <h2>Dynamic Content (Testing Waits)</h2>
+        <button
+          id="delay-btn"
+          class="btn btn-secondary"
+          onclick="showDelayedText()"
+        >
+          Start 3-Second Timer
+        </button>
+        <p id="delay-message" style="display: none" class="status-msg">
+          Text loaded successfully after delay!
+        </p>
+      </section>
+
+      <section class="card" id="table-section">
+        <h2>Web Table Data</h2>
+        <table id="users-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>101</td>
+              <td>Alice Smith</td>
+              <td>Automation Engineer</td>
+              <td><span class="badge active">Active</span></td>
+            </tr>
+            <tr>
+              <td>102</td>
+              <td>Bob Jones</td>
+              <td>Backend Developer</td>
+              <td><span class="badge inactive">Inactive</span></td>
+            </tr>
+            <tr>
+              <td>103</td>
+              <td>Charlie Brown</td>
+              <td>QA Analyst</td>
+              <td><span class="badge active">Active</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <script>
+      function showDelayedText() {
+        setTimeout(function () {
+          document.getElementById("delay-message").style.display = "block";
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

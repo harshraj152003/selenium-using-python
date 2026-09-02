@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover Practice - Target Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f4f6f9;
+      }
+      .hover-container {
+        position: relative;
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .hover-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #ffffff;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .hover-container:hover .hover-content {
+        display: block;
+      }
+      .hover-item {
+        color: #333;
+        padding: 12px 16px;
+        display: block;
+        cursor: pointer;
+      }
+      .hover-item:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Action Chains Practice</h1>
+    <p>Hover over the button below to display the hidden menu options.</p>
+
+    <div class="hover-container" id="mouse-hover-container">
+      Hover Over Me
+      <div class="hover-content" id="hover-dropdown">
+        <span
+          class="hover-item"
+          id="data-1-btn"
+          onclick="alert('data 1 clicked')"
+          >data 1</span
+        >
+        <span
+          class="hover-item"
+          id="data-2-btn"
+          onclick="alert('data 2 clicked')"
+          >data 2</span
+        >
+      </div>
+    </div>
+  </body>
+</html>
